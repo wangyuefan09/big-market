@@ -2,6 +2,7 @@ package cn.bugstack.test;
 
 import cn.bugstack.infrastructure.persistent.dao.IAwardDao;
 import cn.bugstack.infrastructure.persistent.po.Award;
+import cn.bugstack.infrastructure.persistent.redis.IRedisService;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -18,12 +19,5 @@ import java.util.List;
 public class ApiTest {
 
     @Resource
-    private IAwardDao iAwardDao;
-
-    @Test
-    public void test() {
-        List<Award> awards = iAwardDao.queryAwardList();
-        log.info("测试结果：{}", JSON.toJSONString(awards));
-    }
-
+    private IRedisService iRedisService;
 }

@@ -1,4 +1,4 @@
-package cn.bugstack.config;
+package cn.bugstack.config.thread;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

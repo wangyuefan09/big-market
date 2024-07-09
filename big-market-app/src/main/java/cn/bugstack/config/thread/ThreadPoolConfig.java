@@ -1,4 +1,4 @@
-package cn.bugstack.config;
+package cn.bugstack.config.thread;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
