@@ -2,6 +2,7 @@ package cn.bugstack.config.redis;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
+import org.redisson.codec.JsonJacksonCodec;
 import org.redisson.config.Config;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -22,6 +23,7 @@ public class RedisClientConfig {
     public RedissonClient redissonClient(ConfigurableApplicationContext applicationContext,
                                          @Qualifier("redisClientConfigProperties") RedisClientConfigProperties properties) {
         Config config = new Config();
+        config.setCodec(new JsonJacksonCodec());
 
         config.useSingleServer()
                 .setAddress("redis://" + properties.getHost() + ":" + properties.getPort())

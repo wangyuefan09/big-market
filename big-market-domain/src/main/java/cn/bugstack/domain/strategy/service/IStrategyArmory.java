@@ -1,4 +1,4 @@
-package cn.bugstack.domain.strategy.service.armory;
+package cn.bugstack.domain.strategy.service;
 
 /**
  * @author wangyuefan
@@ -12,7 +12,7 @@ public interface IStrategyArmory {
      *
      * @param strategyId 策略ID
      */
-    void assembleLotteryStrategy(Long strategyId);
+    boolean assembleLotteryStrategy(Long strategyId);
 
     /**
      * 获取一个随机的奖品ID
@@ -21,4 +21,14 @@ public interface IStrategyArmory {
      * @return 奖品ID
      */
     Integer getRandomAwardId(Long strategyId);
+
+    /**
+     * 获取一个随机的奖品ID
+     *
+     * @param strategyId      策略ID
+     * @param ruleWeightValue 规则权重值
+     * @return 奖品ID
+     */
+    Integer getRandomAwardId(Long strategyId, String ruleWeightValue);
+
 }
