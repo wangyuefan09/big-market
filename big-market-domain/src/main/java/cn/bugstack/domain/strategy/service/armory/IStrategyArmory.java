@@ -1,4 +1,4 @@
-package cn.bugstack.domain.strategy.service;
+package cn.bugstack.domain.strategy.service.armory;
 
 /**
  * @author wangyuefan

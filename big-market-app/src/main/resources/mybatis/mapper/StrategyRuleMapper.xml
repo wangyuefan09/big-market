@@ -30,4 +30,13 @@
         where strategy_id = #{strategyId} and rule_model = #{ruleModel}
     </select>
 
+    <select id="queryStrategyValue" parameterType="cn.bugstack.infrastructure.persistent.po.StrategyRule" resultType="java.lang.String">
+        select rule_value
+        from strategy_rule
+        where strategy_id = #{strategyRule.strategyId} and rule_model = #{strategyRule.ruleModel}
+        <if test="null != strategyRule.awardId and strategyRule.awardId != ''">
+            and award_id = #{strategyRule.awardId}
+        </if>
+    </select>
+
 </mapper>

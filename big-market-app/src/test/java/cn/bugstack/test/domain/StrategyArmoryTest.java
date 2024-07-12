@@ -1,6 +1,6 @@
 package cn.bugstack.test.domain;
 
-import cn.bugstack.domain.strategy.service.IStrategyArmory;
+import cn.bugstack.domain.strategy.service.armory.IStrategyArmory;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
