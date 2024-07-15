@@ -3,8 +3,8 @@ package cn.bugstack.domain.strategy.repository;
 import cn.bugstack.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.strategy.model.entity.StrategyEntity;
 import cn.bugstack.domain.strategy.model.entity.StrategyRuleEntity;
+import cn.bugstack.domain.strategy.model.vo.StrategyAwardRuleModelVO;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -82,4 +82,13 @@ public interface IStrategyRepository {
      * @return 规则值
      */
     String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel);
+
+    /**
+     * 查询奖品的规则模型
+     *
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     * @return 字符串类型的规则模型
+     */
+    StrategyAwardRuleModelVO queryStrategyAwardRuleModels(Long strategyId, Integer awardId);
 }

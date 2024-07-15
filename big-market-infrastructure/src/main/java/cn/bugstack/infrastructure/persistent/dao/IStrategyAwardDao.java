@@ -26,4 +26,13 @@ public interface IStrategyAwardDao {
      * @return 策略奖品列表
      */
     List<StrategyAward> queryStrategyAwardListByStrategyId(@Param("strategyId") Long strategyId);
+
+    /**
+     * 查询奖品的规则模型
+     *
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     * @return 字符串类型的规则模型
+     */
+    String queryStrategyAwardRuleModels(@Param("strategyId") Long strategyId, @Param("awardId") Integer awardId);
 }

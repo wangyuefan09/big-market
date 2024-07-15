@@ -7,6 +7,7 @@ import cn.bugstack.domain.strategy.repository.IStrategyRepository;
 import cn.bugstack.domain.strategy.service.armory.IStrategyArmory;
 import cn.bugstack.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -41,6 +42,9 @@ public class StrategyArmoryImpl implements IStrategyArmory {
             return true;
         }
         String ruleModel = strategyEntity.getRuleWeight();
+        if (StringUtils.isBlank(ruleModel)) {
+            return true;
+        }
 
         // 4.通过 ruleModel 向策略规则表中查询策略规则
         StrategyRuleEntity strategyRuleEntity = iStrategyRepository.queryStrategyRule(strategyId, ruleModel);
