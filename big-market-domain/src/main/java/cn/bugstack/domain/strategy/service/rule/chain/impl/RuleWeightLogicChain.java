@@ -3,6 +3,7 @@ package cn.bugstack.domain.strategy.service.rule.chain.impl;
 import cn.bugstack.domain.strategy.repository.IStrategyRepository;
 import cn.bugstack.domain.strategy.service.armory.IStrategyArmory;
 import cn.bugstack.domain.strategy.service.rule.chain.AbstractLogicChain;
+import cn.bugstack.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
 import cn.bugstack.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -35,7 +36,7 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
      * @return 奖品ID
      */
     @Override
-    public Integer logic(String userId, Long strategyId) {
+    public DefaultChainFactory.StrategyAwardVO logic(String userId, Long strategyId) {
         log.info("抽奖责任链---权重开始, userId:{}, strategyId:{}, ruleModel:{}", userId, strategyId, ruleModel());
         // 查询规则值, 数据示例:4000:102,103,104,105 5000:102,103,104,105,106,107 6000:102,103,104,105,106,107,108,109
         String ruleValue = iStrategyRepository.queryStrategyRuleValue(strategyId, ruleModel());
@@ -50,7 +51,10 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
         if (null != currentLevel) {
             Integer awardId = iStrategyArmory.getRandomAwardId(strategyId, analyticalValueMap.get(currentLevel));
             log.info("抽奖责任链---权重过滤, userId:{}, strategyId:{}, ruleModel:{}, awardId:{}", userId, strategyId, ruleModel(), awardId);
-            return awardId;
+            return DefaultChainFactory.StrategyAwardVO.builder()
+                    .awardId(awardId)
+                    .logicModel(ruleModel())
+                    .build();
         }
 
         // 如果没有匹配到奖品, 则放行, 过滤其他责任链
@@ -60,7 +64,7 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
 
     @Override
     protected String ruleModel() {
-        return "rule_weight";
+        return DefaultChainFactory.LogicModel.RULE_WEIGHT.getCode();
     }
 
     /**

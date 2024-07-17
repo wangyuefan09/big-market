@@ -1,23 +1,21 @@
-package cn.bugstack.domain.strategy.model.vo;
+package cn.bugstack.infrastructure.persistent.po;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Date;
 
 /**
  * @author wangyuefan
- * @date 2024/7/17 10:33
+ * @date 2024/7/17 15:50
  * @describe 规则树节点对象
  */
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class RuleTreeNodeVO {
+public class RuleTreeNode {
 
+    /**
+     * 自增ID
+     */
+    private Long id;
     /**
      * 规则树ID
      */
@@ -34,10 +32,13 @@ public class RuleTreeNodeVO {
      * 规则比值
      */
     private String ruleValue;
-
     /**
-     * 规则连线
+     * 创建时间
      */
-    private List<RuleTreeNodeLineVO> treeNodeLineVOList;
+    private Date createTime;
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
 
 }

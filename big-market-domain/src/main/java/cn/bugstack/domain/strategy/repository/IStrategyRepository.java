@@ -3,6 +3,7 @@ package cn.bugstack.domain.strategy.repository;
 import cn.bugstack.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.strategy.model.entity.StrategyEntity;
 import cn.bugstack.domain.strategy.model.entity.StrategyRuleEntity;
+import cn.bugstack.domain.strategy.model.vo.RuleTreeVO;
 import cn.bugstack.domain.strategy.model.vo.StrategyAwardRuleModelVO;
 
 import java.util.List;
@@ -100,4 +101,12 @@ public interface IStrategyRepository {
      * @return 字符串类型的规则模型
      */
     StrategyAwardRuleModelVO queryStrategyAwardRuleModels(Long strategyId, Integer awardId);
+
+    /**
+     * 查询决策树节点对象
+     *
+     * @param treeId 树节点
+     * @return 构造完整的决策树
+     */
+    RuleTreeVO queryRuleTreeByTreeId(String treeId);
 }
