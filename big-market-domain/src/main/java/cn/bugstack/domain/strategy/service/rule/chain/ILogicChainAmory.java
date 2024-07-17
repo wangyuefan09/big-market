@@ -1,4 +1,4 @@
-package cn.bugstack.domain.strategy.service.rule.chain.impl;
+package cn.bugstack.domain.strategy.service.rule.chain;
 
 import cn.bugstack.domain.strategy.service.rule.chain.ILogicChain;
 
